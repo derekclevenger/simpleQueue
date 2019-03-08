@@ -17,29 +17,42 @@ func TestNewQueue(t *testing.T) {
 }
 
 func TestEnqueue(t *testing.T) {
-	q.enqueue(0)
+	q.Enqueue(0)
 	if q.items[0] != 0 {
 		t.Error("Error enqueueing item")
 	}
 
-	q.enqueue(1)
+	q.Enqueue(1)
 	if q.items[1] != 1{
 		t.Error("Error enqueueing item")
 	}
 }
 
 func TestPeek(t *testing.T) {
-	q.enqueue(0)
-	x := q.peek()
+	q.Enqueue(0)
+	x := q.Peek()
 	if x != 0 {
 		t.Error("Error retrieving last element added to queue")
 	}
 }
 
 func TestDequeue(t *testing.T) {
-	q.enqueue(0)
-	x := q.dequeue()
+	q.Enqueue(0)
+	x := q.Dequeue()
 	if x != 0 {
 		t.Error("Error retrieving dequeue")
+	}
+}
+
+func TestQueue_IsEmpty(t *testing.T) {
+	x := q.IsEmpty()
+	if !x {
+		t.Error("Queue should be empty")
+	}
+
+	q.Enqueue(0)
+	x = q.IsEmpty()
+	if x {
+		t.Error("Queue should have a value")
 	}
 }
