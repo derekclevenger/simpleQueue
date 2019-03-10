@@ -45,13 +45,9 @@ func TestDequeue(t *testing.T) {
 }
 
 func TestQueue_IsEmpty(t *testing.T) {
-	x := q.IsEmpty()
-	if !x {
-		t.Error("Queue should be empty")
-	}
 
 	q.Enqueue(0)
-	x = q.IsEmpty()
+	x := q.IsEmpty()
 	if x {
 		t.Error("Queue should have a value")
 	}
