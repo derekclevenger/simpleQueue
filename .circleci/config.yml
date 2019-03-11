@@ -21,4 +21,4 @@ jobs:
           path: /tmp/test-output
           destination: raw-test-output
       - codecov/upload:
-          file: /tmp/artifacts/coverage.html
+          file: /tmp/coverage.html
