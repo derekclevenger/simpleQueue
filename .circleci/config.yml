@@ -2,7 +2,6 @@ version: 2.1
 
 orbs:
   codecov: codecov/codecov@1.0.4
-
 jobs:
   build:
     docker:
@@ -20,5 +19,7 @@ jobs:
             go tool cover -html=c.out -o coverage.html
             mv coverage.html /tmp/artifacts
             bash <(curl -s https://codecov.io/bash)
+      - codecov/upload:
+          file: /tmp/artifacts/coverage.html
       - store_artifacts:
           path: /tmp/artifacts
