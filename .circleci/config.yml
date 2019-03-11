@@ -16,9 +16,9 @@ jobs:
           command: |
             go test -race -coverprofile=c.out
             go tool cover -html=c.out -o coverage.html
-            mv coverage.html /tmp/test-output
       - codecov/upload:
           file: coverage.html
+            mv coverage.html /tmp/test-output
       - store_artifacts:
           path: /tmp/test-output
           destination: raw-test-output
