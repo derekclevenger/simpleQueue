@@ -6,6 +6,8 @@ jobs:
     docker:
       - image: circleci/golang:1.11
     steps:
+      - codecov/upload:
+          file: /tmp/test-output/coverage.html
       - checkout
       - run: go build
       - run:
@@ -16,9 +18,7 @@ jobs:
           command: |
             go test -race -coverprofile=c.out
             go tool cover -html=c.out -o coverage.html
-      - codecov/upload:
-          file: coverage.html
+            mv coverage.html /tmp/test-output
       - store_artifacts:
           path: /tmp/test-output
           destination: raw-test-output
-
