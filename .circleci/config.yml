@@ -1,6 +1,15 @@
 version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.4
+
+test:
+  pre:
+    - go get github.com/mattn/goveralls
+  override:
+    - go test -v -cover -race -coverprofile=/home/ubuntu/coverage.out
+  post:
+    - /home/ubuntu/.go_workspace/bin/goveralls -coverprofile=/home/ubuntu/coverage.out -service=circle-ci -repotoken=$COVERALLS_TOKEN
+
 jobs:
   build:
     docker:
@@ -16,13 +25,6 @@ jobs:
           command: |
             go test -race -coverprofile=c.out
             go tool cover -html=c.out -o coverage.html
-      test:
-        pre:
-          - go get github.com/mattn/goveralls
-        override:
-          - go test -v -cover -race -coverprofile=/home/ubuntu/coverage.out
-        post:
-          - /home/ubuntu/.go_workspace/bin/goveralls -coverprofile=/home/ubuntu/coverage.out -service=circle-ci -repotoken=$COVERALLS_TOKEN
       - codecov/upload:
           file: coverage.html
             mv coverage.html /tmp/test-output
