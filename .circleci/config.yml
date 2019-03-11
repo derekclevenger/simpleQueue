@@ -19,6 +19,6 @@ jobs:
             go test -race -coverprofile=c.out
             go tool cover -html=c.out -o coverage.html
       - codecov/upload:
-          file: coverage.html
+          file:
       - store_artifacts:
           path: /tmp/test-output
