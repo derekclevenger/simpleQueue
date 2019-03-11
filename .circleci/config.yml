@@ -18,6 +18,6 @@ jobs:
             mv coverage.html /tmp/artifacts
       - run:
           name: Send to Codecov
-          command: "bash <(curl -s https://codecov.com/bash) -t 6fa22f20-fdf9-468a-86fe-d5d4aaf4e382"
+          command: "bash <(curl -s https://codecov.com/bash) -t"
       - store_artifacts:
           path: /tmp/artifacts
