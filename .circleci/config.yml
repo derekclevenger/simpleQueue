@@ -17,8 +17,8 @@ jobs:
       - run:
           command: |
             go test -race -coverprofile=c.out
-            go tool cover -xml=c.out -o coverage.xml
-      - codecov/upload:
-          file: coverage.xml
+            go tool cover -html=c.out -o coverage.html
+          - codecov/upload:
+              file: coverage.html
       - store_artifacts:
           path: /tmp/test-output
