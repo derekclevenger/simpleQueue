@@ -20,5 +20,6 @@ jobs:
             go tool cover -html=c.out -o coverage.html
       - codecov/upload:
           flags: unnittest
+          file: coverage.html
       - store_artifacts:
           path: /tmp/test-output
