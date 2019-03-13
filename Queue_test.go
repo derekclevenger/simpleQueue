@@ -1,6 +1,8 @@
 package Queue
 
-import "testing"
+import (
+	"testing"
+)
 
 var q Queue
 
@@ -17,6 +19,10 @@ func TestNewQueue(t *testing.T) {
 }
 
 func TestEnqueue(t *testing.T) {
+	err := q.Enqueue(nil)
+	if err == nil {
+		t.Error("Should have recieved and error here")
+	}
 	q.Enqueue(0)
 	if q.items[0] != 0 {
 		t.Error("Error enqueueing item")

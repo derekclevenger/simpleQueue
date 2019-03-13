@@ -1,6 +1,9 @@
 package Queue
 
-import "sync"
+import (
+	"fmt"
+	"sync"
+)
 
 type items []interface {}
 
@@ -18,7 +21,7 @@ func NewQueue(size int64) *Queue {
 func (q *Queue) Enqueue(item interface{}) error {
 
 	if item == nil {
-		return nil
+		return fmt.Errorf("item had no value")
 	}
 
 	q.lock.Lock()
