@@ -50,11 +50,18 @@ func TestDequeue(t *testing.T) {
 	}
 }
 
-func TestQueue_IsEmpty(t *testing.T) {
+func TestIsEmpty(t *testing.T) {
 
 	q.Enqueue(0)
 	x := q.IsEmpty()
 	if x {
 		t.Error("Queue should have a value")
+	}
+}
+
+func TestLength(t *testing.T) {
+	q.Enqueue(1)
+	if x := q.Length(); x == 0 {
+		t.Error("Length should be greater than zero")
 	}
 }
