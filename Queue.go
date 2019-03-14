@@ -53,8 +53,9 @@ func (q *Queue) Peek() interface{} {
 }
 
 func (q *Queue) IsEmpty() bool {
-	q.lock.Lock()
-	defer q.lock.Unlock()
 	return len(q.items) == 0
 }
 
+func (q *Queue) Length() int {
+	return len(q.items)
+}
